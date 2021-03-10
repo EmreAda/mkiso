@@ -50,9 +50,13 @@ chroot sid-chroot apt -qq install live-config live-boot -y
 echo -e "${YELLOW}I: Installing the Openbox, Tint2 and LightDM ...${NC}"
 chroot sid-chroot apt -qq install xorg xinit openbox tint2 lightdm feh -y
 
+echo -e "${YELLOW}I: Installing the other packages ...${NC}"
+chroot sid-chroot apt -qq install xfce4-terminal firefox network-manager -y
+chroot sid-chroot apt -qq install apt-listbugs papirus-icon-theme lxappearance pavucontrol volumeicon -y
+
 echo -e "${YELLOW}I: Installing the config files ...${NC}"
-echo -e "${RED}E: Skip ...${NC}"
-# https://github.com/fuckbian/configs
+chroot sid-chroot/tmp git clone https://github.com/fuckbian/configs
+chroot sid-chroot/tmp ./configs/copy.sh
 
 echo -e "${YELLOW}I: Installing the live installer ...${NC}"
 chroot sid-chroot apt -qq install devscripts
@@ -60,10 +64,6 @@ chroot sid-chroot/tmp git clone https://gitlab.com/ggggggggggggggggg/17g
 chroot sid-chroot/tmp/17g mk-build-deps --install
 chroot sid-chroot/tmp/17g debuild -us -uc -b
 chroot sid-chtoot/tmp apt -qq install ./17g*.deb
-
-echo -e "${YELLOW}I: Installing the other packages ...${NC}"
-chroot sid-chroot apt -qq install xfce4-terminal firefox network-manager -y
-chroot sid-chroot apt -qq install apt-listbugs papirus-icon-theme lxappearance pavucontrol volumeicon -y
 
 echo -e "${YELLOW}I: Installing the drivers ...${NC}"
 chroot sid-chroot apt -qq install firmware-amd-graphics firmware-atheros firmware-b43-installer firmware-b43legacy-installer firmware-bnx2 firmware-bnx2x firmware-brcm80211 firmware-cavium firmware-intel-sound firmware-intelwimax firmware-ipw2x00 firmware-ivtv firmware-iwlwifi firmware-libertas firmware-linux firmware-linux-free firmware-linux-nonfree firmware-misc-nonfree firmware-myricom firmware-netxen firmware-qlogic firmware-realtek firmware-samsung firmware-siano firmware-ti-connectivity firmware-zd1211 -y
