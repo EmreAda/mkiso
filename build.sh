@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Version: 1.3.1
+# Version: 1.3.3
 # Description: ISO creation script
 # Source: https://github.com/fuckbian/mkiso
 # Author: Adil Gurbuz (beucismis) <beucismis@tutamail.com>
@@ -63,6 +63,7 @@ echo -e "${YELLOW}I: Installing the live installer ...${NC}"
 chroot sid-chroot/tmp git clone https://gitlab.com/ggggggggggggggggg/17g
 chroot sid-chroot/tmp/17g mk-build-deps --install
 chroot sid-chroot/tmp/17g debuild -us -uc -b
+chroot sid-chroot apt -qq update -y
 chroot sid-chtoot/tmp apt -qq install ./17g*.deb -y
 
 echo -e "${YELLOW}I: Installing the drivers ...${NC}"
