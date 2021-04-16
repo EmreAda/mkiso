@@ -3,7 +3,7 @@
 # Version: 1.3.3
 # Description: ISO creation script
 # Source: https://github.com/fuckbian/mkiso
-# Author: Adil Gurbuz (beucismis) <beucismis@tutamail.com>
+# Author: Adil Gurbuz (beucismis) <beucismis[at]tutamail[dot]com>
 #
 
 
